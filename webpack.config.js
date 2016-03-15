@@ -5,6 +5,7 @@ const NpmInstallPlugin = require('npm-install-webpack-plugin');
 
 
 const TARGET = process.env.npm_lifecycle_event;
+process.env.BABEL_ENV = TARGET;
 
 const PATH = {
   app: path.join(__dirname, 'app'),
@@ -15,6 +16,9 @@ const common = {
   entry: {
     app:  PATH.app
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   output: {
     path: PATH.build,
     filename: 'bundle.js'
@@ -24,6 +28,11 @@ const common = {
       {
         test: /\.css$/,
         loaders: ['style', 'css'],
+        include: PATH.app
+      },
+      {
+        test: /\.jsx?$/,
+        loaders: ['babel?cacheDirectory'],
         include: PATH.app
       }
     ]
@@ -39,6 +48,7 @@ if(TARGET === 'start' || !TARGET){
       hot: true,
       inline: true,
       progress: true,
+      cache: true,
       status: 'errors-only',
       host: (process.env.HOST || '0.0.0.0'),
       port: process.env.port
