@@ -45,8 +45,6 @@ if(TARGET === 'start' || !TARGET){
     devServer: {
       contentBase: PATH.build,
       historyApiFallback: true,
-      hot: true,
-      inline: true,
       progress: true,
       cache: true,
       status: 'errors-only',
@@ -58,10 +56,7 @@ if(TARGET === 'start' || !TARGET){
       new NpmInstallPlugin({
         save: true
       })
-    ],
-    watchOptions: {
-      poll: true
-    }
+    ]
   });
 }
 

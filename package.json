@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --watch-poll --inline --hot"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +26,10 @@
     "webpack-merge": "^0.8.3"
   },
   "dependencies": {
+    "alt": "^0.18.3",
+    "alt-container": "^1.0.2",
+    "alt-utils": "^1.0.0",
+    "node-uuid": "^1.4.7",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
   }
